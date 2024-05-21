@@ -8,6 +8,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 
+// rendering the HTML view
+
 @Controller
 public class ViewController {
 
@@ -17,16 +19,16 @@ public class ViewController {
         this.stringService = stringService;
     }
 
-    @GetMapping("/")
+    @GetMapping("/") // Processes GET requests to the root URL (/).
     public String showForm(Model model) {
-        model.addAttribute("stringInfo", new StringInfo());
+        model.addAttribute("stringInfo", new StringInfo()); // Adds a new StringInfo object to the model
         return "index";
     }
 
-    @PostMapping("/storeString")
-    public String storeString(@ModelAttribute StringInfo stringInfo) {
+    @PostMapping("/storeString") // Processes POST requests to /storeString
+    public String storeString(@ModelAttribute StringInfo stringInfo) { // binds the form parameters to the StringInfo object
         stringService.setStoredString(stringInfo.getStoredString());
-        return "redirect:/getStringInfo";
+        return "redirect:/getStringInfo"; // Redirects the user to the /getStringInfo endpoint to display the stored information
     }
 
     @GetMapping("/getStringInfo")

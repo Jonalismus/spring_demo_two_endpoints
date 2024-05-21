@@ -13,8 +13,8 @@ Second endpoint that returns a JSON document with the following information:
 
  */
 
-@RestController
-@RequestMapping("/api")
+@RestController // sends JSON file as response
+@RequestMapping("/api") // -> indicates path
 public class GetStringInfoController {
 
     private final StringService stringService;
@@ -23,7 +23,7 @@ public class GetStringInfoController {
         this.stringService = stringService;
     }
 
-    @GetMapping("getStringInfo")
+    @GetMapping("getStringInfo") // marks endpoint in the method and processes HTTP GET requests
     public StringInfo getStringInfo(){
         return stringService.getStringInfo();
     }

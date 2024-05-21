@@ -5,7 +5,7 @@ import org.springframework.web.bind.annotation.*;
 
 //first endpoint that transmits a string that the service must remember
 
-@RestController
+@RestController // sends JSON file as response
 @RequestMapping("/api")
 public class StoreStringController {
 
@@ -15,7 +15,7 @@ public class StoreStringController {
         this.stringService = stringService;
     }
 
-    @PostMapping("/storeString")
+    @PostMapping("/storeString") // processes HTTP POST requests
     public void storeString(@RequestBody String input) {
         stringService.setStoredString(input);
     }
