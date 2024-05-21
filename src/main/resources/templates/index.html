@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="">
+<head>
+    <title>String Eingabe</title>
+</head>
+<body>
+<h1>Geben Sie einen String ein</h1>
+<form action="#" th:action="@{/storeString}" th:object="${stringInfo}" method="post">
+    <label for="inputString">String:</label>
+    <input type="text" id="inputString" name="inputString" th:field="*{storedString}" required/>
+    <button type="submit">Speichern</button>
+</form>
+</body>
+</html>
