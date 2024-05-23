@@ -9,6 +9,11 @@ class StringServiceTest {
 
     private StringService stringService;
 
+    @BeforeEach
+    void setUp() {
+        stringService = new StringService();
+    }
+
     @Test
     void testGetStringInfo_HelloWorld() {
         stringService.setStoredString("Hello World");
@@ -31,11 +36,6 @@ class StringServiceTest {
         StringInfo stringInfo = stringService.getStringInfo();
 
         assertEquals(2, stringInfo.getWhitespaceTupelsCount());
-    }
-
-    @BeforeEach
-    void setUp() {
-        stringService = new StringService();
     }
 
     @Test

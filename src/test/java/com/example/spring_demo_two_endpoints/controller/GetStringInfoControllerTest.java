@@ -19,7 +19,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 class GetStringInfoControllerTest {
 
     @Autowired
-    private MockMvc mockMvc;
+    private MockMvc mockMvc; // is used to simulate HTTP requests to the controllers and check the responses
 
     @MockBean
     private StringService stringService;
@@ -33,9 +33,9 @@ class GetStringInfoControllerTest {
 
         when(stringService.getStringInfo()).thenReturn(stringInfo);
 
-        mockMvc.perform(get("/api/getStringInfo")
+        mockMvc.perform(get("/api/getStringInfo") // sends an HTTP GET request to the endpoint /api/getStringInfo and expects a response in JSON format
                         .accept(MediaType.APPLICATION_JSON))
-                .andExpect(status().isOk())
+                .andExpect(status().isOk()) // checks HTTP-Status
                 .andExpect(content().contentType(MediaType.APPLICATION_JSON))
                 .andExpect(jsonPath("$.storedString").value("Test String"))
                 .andExpect(jsonPath("$.numericOnly").value(false))
